@@ -1,8 +1,61 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Robot Vacuum
 
-## Available Scripts
+Description:
 
-In the project directory, you can run:
+The application is a simulation of a robot vacuum moving in an area of dimensions 5 units by 5 units.
+There are no other obstructions in the area.
+The robot is free to roam around the area but must be prevented from leaving the area.
+Any movement that would result in the robot leaving the area must be prevented, however further valid movement commands must still be allowed.
+
+Create a command line application that can read in commands of the following syntax:
+
+PLACE X,Y,F
+MOVE
+LEFT
+RIGHT
+REPORT
+
+PLACE will put the robot in the area at position X,Y and facing direction F (NORTH, SOUTH, EAST, or WEST).
+The origin (0,0) can be considered to be the SOUTH WEST corner.
+The first valid command to the robot is a PLACE command, after that, any sequence of commands may be issued, in any order, including another PLACE command. The application should discard all commands in the sequence until a valid PLACE command has been executed.
+MOVE will move the robot one unit forward in the direction it is currently facing.
+LEFT and RIGHT will rotate the robot 90 degrees in the specified direction without changing the position of the robot.
+REPORT will announce the X,Y and F of the robot. This can be in any form, but standard output is sufficient.
+
+A robot that is not already placed in the area should ignore the MOVE, LEFT, RIGHT and REPORT commands.
+Input can be from a file, or from standard input, as the developer chooses.
+
+Provide the ability to test the application.
+Include instructions on how to run the application.
+Either send a link to the source code on GitHub or instead email it in a Zip file.
+
+
+Constraints:
+
+The robot must not leave the area during movement. This includes the initial placement of the robot.  Any command that would cause the robot to leave the area must be ignored.
+
+Example Input and Output:
+a)
+PLACE 0,0,NORTH
+MOVE
+REPORT
+Output: 0,1,NORTH
+
+b)
+PLACE 0,0,NORTH
+LEFT
+REPORT
+Output: 0,0,WEST
+
+c)
+PLACE 1,2,EAST
+MOVE
+MOVE
+LEFT
+MOVE
+REPORT
+Output: 3,3,NORTH
+
 
 ### `npm start`
 
@@ -27,42 +80,3 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
