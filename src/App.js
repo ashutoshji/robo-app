@@ -16,13 +16,13 @@ class App extends Component {
       errorMessage:''
     };
 
-    this.handlePress = this.handlePress.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleReset = this.handleReset.bind(this);
+    this.onPress = this.onPress.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onReset = this.onReset.bind(this);
   }
 
   // Reset the game
-  handleReset(event) {
+  onReset(event) {
     this.setState({
       value: "",
       location: null,
@@ -34,7 +34,7 @@ class App extends Component {
   }
 
   // Registering user event if valid
-  handlePress(event) {
+  onPress(event) {
     if (event.key === "Enter") {
       // Split by space and comma
       const inputLine = this.state.value.split(/[\s,]+/);
@@ -115,7 +115,7 @@ class App extends Component {
     }
   }
 
-  handleChange(event) {
+  onChange(event) {
     const value = event.target.value.toUpperCase();
     this.setState({ value });
   }
@@ -137,15 +137,15 @@ class App extends Component {
           <div className="col-md-8 offset-md-2">
             <div className="input-group">
               <input
-                onKeyPress={this.handlePress}
-                onChange={this.handleChange}
+                onKeyPress={this.onPress}
+                onChange={this.onChange}
                 value={this.state.value}
                 className="form-control"
                 placeholder="Enter command here..."
               />
               {this.state.placed ? (
                 <button
-                  onClick={this.handleReset}
+                  onClick={this.onReset}
                   className="btn btn-danger btn-block mt-2"
                 >
                   Reset
